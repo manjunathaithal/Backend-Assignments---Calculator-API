@@ -15,12 +15,23 @@ app.use(bodyParser.json());
 app.get("/", (req, res) => {
   res.send("Hello world!");
 });
+
 app.post("/add", (req, res) => {
   let num1 = req.body.num1;
   let num2 = req.body.num2;
 
-  if (!isNaN(num1) && !isNaN(num2)) {
-    let result = Number(num1 + num2);
+  if (typeof num1 === "number" && typeof num2 === "number") {
+    let result = num1 + num2;
+    if (result > 1000000) {
+      res.send({
+        message: "Overflow",
+      });
+    }
+    if (result < -1000000) {
+      res.send({
+        message: "Underflow",
+      });
+    }
     res.send({
       status: "success",
       message: "the sum of given two numbers",
@@ -33,11 +44,22 @@ app.post("/add", (req, res) => {
     });
   }
 });
+
 app.post("/sub", (req, res) => {
   let num1 = req.body.num1;
   let num2 = req.body.num2;
-  if (!isNaN(num1) && !isNaN(num2)) {
+  if (typeof num1 === "number" && typeof num2 === "number") {
     let result = num1 - num2;
+    if (result > 1000000) {
+      res.send({
+        message: "Overflow",
+      });
+    }
+    if (result < -1000000) {
+      res.send({
+        message: "Underflow",
+      });
+    }
     res.send({
       status: "success",
       message: "the difference of given two numbers",
@@ -50,8 +72,18 @@ app.post("/sub", (req, res) => {
 app.post("/multiply", (req, res) => {
   let num1 = req.body.num1;
   let num2 = req.body.num2;
-  if (!isNaN(num1) && !isNaN(num2)) {
-    let result = Number(num1 * num2);
+  if (typeof num1 === "number" && typeof num2 === "number") {
+    let result = num1 * num2;
+    if (result > 1000000) {
+      res.send({
+        message: "Overflow",
+      });
+    }
+    if (result < -1000000) {
+      res.send({
+        message: "Underflow",
+      });
+    }
     res.send({
       status: "success",
       message: "The product of given numbers",
@@ -68,9 +100,19 @@ app.post("/multiply", (req, res) => {
 app.post("/divide", (req, res) => {
   let num1 = req.body.num1;
   let num2 = req.body.num2;
-  if (!isNaN(num1) && !isNaN(num2)) {
+  if (typeof num1 === "number" && typeof num2 === "number") {
     if (num2 != 0) {
       let result = req.body.num1 / req.body.num2;
+      if (result > 1000000) {
+        res.send({
+          message: "Overflow",
+        });
+      }
+      if (result < -1000000) {
+        res.send({
+          message: "Underflow",
+        });
+      }
       res.send({
         status: "success",
         message: "The division of given numbers",
