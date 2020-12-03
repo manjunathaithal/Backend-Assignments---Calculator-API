@@ -16,8 +16,8 @@ app.get("/", (req, res) => {
   res.send("Hello world!");
 });
 app.post("/add", (req, res) => {
-  let num1 = req.body.num1;
-  let num2 = req.body.num2;
+  let num1 = Number(req.body.num1);
+  let num2 = Number(req.body.num2);
 
   if (!isNaN(num1) && !isNaN(num2)) {
     let result = num1 + num2;
@@ -34,8 +34,8 @@ app.post("/add", (req, res) => {
   }
 });
 app.post("/sub", (req, res) => {
-  let num1 = req.body.num1;
-  let num2 = req.body.num2;
+  let num1 = Number(req.body.num1);
+  let num2 = Number(req.body.num2);
   if (!isNaN(num1) && !isNaN(num2)) {
     let result = num1 - num2;
     res.send({
@@ -48,8 +48,8 @@ app.post("/sub", (req, res) => {
   }
 });
 app.post("/multiply", (req, res) => {
-  let num1 = req.body.num1;
-  let num2 = req.body.num2;
+  let num1 = Number(req.body.num1);
+  let num2 = Number(req.body.num2);
   if (!isNaN(num1) && !isNaN(num2)) {
     let result = num1 * num2;
     res.send({
@@ -66,8 +66,8 @@ app.post("/multiply", (req, res) => {
 });
 
 app.post("/divide", (req, res) => {
-  let num1 = req.body.num1;
-  let num2 = req.body.num2;
+  let num1 = Number(req.body.num1);
+  let num2 = Number(req.body.num2);
   if (!isNaN(num1) && !isNaN(num2)) {
     if (num2 != 0) {
       let result = req.body.num1 / req.body.num2;
