@@ -51,6 +51,7 @@ app.post("/multiply", (req, res) => {
   let num1 = req.body.num1;
   let num2 = req.body.num2;
   if (!isNaN(num1) && !isNaN(num2)) {
+    let result = num1 * num2;
     res.send({
       status: "success",
       message: "The product of given numbers",
