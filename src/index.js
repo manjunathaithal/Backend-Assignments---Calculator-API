@@ -16,12 +16,22 @@ app.get("/home", (req, res) => {
   res.send("Hello world!");
 });
 app.post("/add", (req, res) => {
-  let result = req.body.num1 + req.body.num2;
-  res.send({
-    status: "success",
-    message: "the sum of given two numbers",
-    sum: result,
-  });
+  let num1 = req.body.num1;
+  let num2 = req.body.num2;
+
+  if (isNaN(num1) && isNaN(num2)) {
+    let result = num1 + num2;
+    res.send({
+      status: "success",
+      message: "the sum of given two numbers",
+      sum: result,
+    });
+  } else {
+    res.send({
+      status: "failure",
+      message: "Invalid data types",
+    });
+  }
 });
 app.post("/sub", (req, res) => {
   let result = req.body.num1 - req.body.num2;
