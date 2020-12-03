@@ -12,7 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 // your code goes here
-app.get("hello World!");
+app.get("/home", (req, res) => {
+  res.send("Hello world!");
+});
 app.post("/add", (req, res) => {
   let result = req.body.num1 + req.body.num2;
   res.send({
