@@ -68,12 +68,19 @@ app.post("/divide", (req, res) => {
   let num1 = req.body.num1;
   let num2 = req.body.num2;
   if (!isNaN(num1) && !isNaN(num2)) {
-    let result = req.body.num1 / req.body.num2;
-    res.send({
-      status: "success",
-      message: "The division of given numbers",
-      result: result,
-    });
+    if (num2 != 0) {
+      let result = req.body.num1 / req.body.num2;
+      res.send({
+        status: "success",
+        message: "The division of given numbers",
+        result: result,
+      });
+    } else {
+      res.send({
+        status: "failure",
+        message: "Cannot divide by zero",
+      });
+    }
   } else {
     res.send({
       status: "failure",
